@@ -5,8 +5,8 @@ This project is a deep learning-based waste classification system that classifie
 - 🗞 Paper
 - 🍃 Organic
 - 🔩 Metal
-- 💻 E-waste
-
+- 💻 E-waste (currently includes **batteries only**)
+  
 It uses:
 - ✅ PyTorch for training
 - ✅ GradCAM for model explainability
