@@ -15,10 +15,10 @@ class_names = ['E-waste', 'metal', 'organic', 'paper', 'plastic']  # update if n
 # Load the trained model
 def load_model():
     if not os.path.exists("final_waste_model.pth"):
-        url = "https://drive.google.com/uc?id=YOUR_FILE_ID"
-        gdown.download(url, "final_waste_model.pth", quiet=False)
+        url = "https://drive.google.com/uc?export=download&id=1PVjwZ5Qgl3bGVSJDMtiTQOFoMjmjfu_X"
+        gdown.download(url, "final_waste_model.pth", quiet=False, fuzzy=True)
 
-    model = YourModelClass()  # your model architecture
+    model = YourModelClass()  # replace with your model class
     model.load_state_dict(
         torch.load("final_waste_model.pth", map_location=torch.device("cpu"))
     )
