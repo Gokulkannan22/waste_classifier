@@ -7,16 +7,21 @@ from PIL import Image
 import numpy as np
 import cv2
 from gradcam_utils import GradCAM
-
+import os
+import gdown
 # Load class labels
 class_names = ['E-waste', 'metal', 'organic', 'paper', 'plastic']  # update if needed
 
 # Load the trained model
 def load_model():
-    model = models.resnet18(pretrained=False)
-    num_ftrs = model.fc.in_features
-    model.fc = nn.Linear(num_ftrs, len(class_names))
-    model.load_state_dict(torch.load('final_waste_model.pth', map_location=torch.device('cpu')))
+    if not os.path.exists("final_waste_model.pth"):
+        url = "YOUR_DRIVE_DIRECT_DOWNLOAD_LINK"
+        gdown.download(url, "final_waste_model.pth", quiet=False)
+
+    model = YourModelClass()   # your model code
+    model.load_state_dict(
+        torch.load("final_waste_model.pth", map_location=torch.device("cpu"))
+    )
     model.eval()
     return model
 
