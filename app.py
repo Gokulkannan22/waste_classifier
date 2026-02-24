@@ -18,10 +18,14 @@ def load_model():
         url = "https://drive.google.com/uc?export=download&id=1PVjwZ5Qgl3bGVSJDMtiTQOFoMjmjfu_X"
         gdown.download(url, "final_waste_model.pth", quiet=False, fuzzy=True)
 
-    model = YourModelClass()  # replace with your model class
+    # Recreate model architecture (ResNet18)
+    model = models.resnet18(weights=None)
+    model.fc = nn.Linear(model.fc.in_features, 5)  # 5 classes
+
     model.load_state_dict(
         torch.load("final_waste_model.pth", map_location=torch.device("cpu"))
     )
+
     model.eval()
     return model
 # Preprocess image
